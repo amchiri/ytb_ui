@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YTB Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="layout">
+      <header class="hero panel reveal">
+        <p class="eyebrow">Localhost YouTube Tool</p>
+        <h1>YTB Studio</h1>
+        <p class="subtitle">
+          Telecharge en MP3/MP4 avec yt-dlp. Soit URL brute, soit recherche YouTube integree.
+        </p>
+      </header>
+
+      <section class="panel reveal delay-1">
+        <div class="tabs">
+          <button class="tab active" data-target="tab-url">URL directe</button>
+          <button class="tab" data-target="tab-search">Recherche YouTube</button>
+        </div>
+
+        <div id="tab-url" class="tab-content active">
+          <label>URL YouTube</label>
+          <div class="row">
+            <input id="urlInput" type="text" placeholder="https://www.youtube.com/watch?v=..." />
+            <button id="downloadFromUrlBtn" class="cta">Telecharger</button>
+            <button id="downloadFromUrlBlobBtn" class="ghost">Blob</button>
+          </div>
+        </div>
+
+        <div id="tab-search" class="tab-content">
+          <label>Recherche</label>
+          <div class="row">
+            <input id="searchInput" type="text" placeholder="Tape un titre, artiste, mix..." />
+            <button id="searchBtn" class="ghost">Chercher</button>
+          </div>
+          <div class="selected-row">
+            <button id="downloadSelectedBtn" class="cta" disabled>Telecharger la selection</button>
+            <button id="downloadSelectedBlobBtn" class="ghost" disabled>Telecharger blob selection</button>
+            <p id="selectedLabel" class="hint">Aucune video selectionnee.</p>
+          </div>
+          <div id="searchResults" class="results"></div>
+        </div>
+      </section>
+
+      <section class="panel reveal delay-2">
+        <h2>Options de telechargement</h2>
+        <div class="grid-options">
+          <div>
+            <label>Mode</label>
+            <select id="modeSelect">
+              <option value="mp3_advanced">MP3 avance (metadata + thumbnail)</option>
+              <option value="mp3_simple">MP3 simple</option>
+              <option value="mp4">MP4 video</option>
+              <option value="raw">Brut (Sans conversion - Pas besoin de FFmpeg)</option>
+            </select>
+          </div>
+          <div>
+            <label>Nom custom (optionnel)</label>
+            <input id="outputTemplate" type="text" value="%(artist)s - %(title)s.%(ext)s" />
+          </div>
+        </div>
+        <p class="hint">
+          Le mode MP3 avance applique ta commande complete automatiquement.
+        </p>
+      </section>
+
+      <section class="panel reveal delay-3">
+        <div class="log-head">
+          <h2>Etat du job</h2>
+          <div style="display: flex; gap: 0.75rem; align-items: center;">
+            <button id="clearLogsBtn" class="ghost" style="padding: 0.3rem 0.6rem; font-size: 0.75rem; border-radius: 8px;">Effacer</button>
+            <span id="jobStatus" class="pill idle">idle</span>
+          </div>
+        </div>
+        <pre id="logs"></pre>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

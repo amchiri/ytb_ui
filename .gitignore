@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Downloads
+downloads/
+ytb_blob_*/
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+.dockerignore

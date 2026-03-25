@@ -1,0 +1,8 @@
+# Bibliothèques Python
+Flask==3.1.0
+yt-dlp==2026.3.17
+gunicorn==23.0.0
+
+# DÉPENDANCE SYSTÈME : FFmpeg est obligatoire pour la conversion MP3/MP4.
+# Sur Windows : winget install ffmpeg
+# Sur Linux : sudo apt install ffmpeg
