@@ -1,9 +1,10 @@
 version: '3.8'
 
 services:
-  ytb-studio:
+  yt-dlp_ui:
     build: .
-    container_name: ytb-studio
+    image: yt-dlp_ui
+    container_name: yt-dlp_ui
     ports:
       - "8000:8000"
     volumes:
