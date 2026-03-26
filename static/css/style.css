@@ -87,6 +87,13 @@ body {
   padding: 2rem 1rem;
 }
 
+.main-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 20px var(--accent-glow));
+}
+
 .hero h1 {
   margin: 0.5rem 0;
   font-size: clamp(2.5rem, 5vw, 4rem);
